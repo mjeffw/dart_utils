@@ -13,4 +13,8 @@ class ListEx {
   //   }
   //   return true;
   // }
+
+  static bool isEmpty(List<dynamic> list) {
+    return !(list != null && list.isNotEmpty);
+  }
 }

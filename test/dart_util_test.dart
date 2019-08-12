@@ -25,6 +25,12 @@ void main() {
     expect(StringEx.toTitleCase('test-num5ers'), 'Test Num5ers');
   });
 
+  test('isEmpty', () {
+    expect(ListEx.isEmpty(null), true);
+    expect(ListEx.isEmpty([]), true);
+    expect(ListEx.isEmpty(['list']), false);
+  });
+
   group('RegExpEx', () {
     String pattern = r'\[(?<one>.*)\]';
     RegExp r = RegExp(pattern);

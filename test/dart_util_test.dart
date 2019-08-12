@@ -1,4 +1,5 @@
 import 'package:dart_utils/dart_util.dart';
+import 'package:dart_utils/src/lists.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -22,5 +23,32 @@ void main() {
     expect(StringEx.toTitleCase('test spaces is'), 'Test Spaces Is');
     expect(StringEx.toTitleCase('test.dots'), 'Test Dots');
     expect(StringEx.toTitleCase('test-num5ers'), 'Test Num5ers');
+  });
+
+  group('listEquals', () {
+    List<int> intList = [1, 3, 5, 8, 13];
+    test('identical', () {
+      expect(ListEx.listEquals(intList, intList), true);
+    });
+
+    test('equivalent', () {
+      List<int> another = [1, 3, 5, 8, 13];
+      expect(ListEx.listEquals(intList, another), true);
+    });
+    
+    test('different lengths', () {
+      List<int> another = [1, 2, 3, 5, 8, 13];
+      expect(ListEx.listEquals(intList, another), false);
+    });
+    
+    test('same length, different members', () {
+      List<int> another = [1, 3, 5, 8, 11];
+      expect(ListEx.listEquals(intList, another), false);
+    });
+
+    test('different types', () {
+      List<String> another = ['1', '3', '5', '8', '13'];
+      expect(ListEx.listEquals(intList, another), false);
+    });
   });
 }

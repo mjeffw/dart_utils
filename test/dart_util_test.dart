@@ -1,13 +1,12 @@
 import 'package:dart_utils/dart_util.dart';
 import 'package:dart_utils/src/regexps.dart';
-import 'package:quiver/collection.dart';
 import 'package:test/test.dart';
 
 void main() {
   test('regex', () {
-    expect(RegExp(R_DIGITS), isNotNull);
-    expect(RegExp(R_SIGN), isNotNull);
-    expect(RegExp(R_NUMBER), isNotNull);
+    expect(RegExp(RegExpEx.R_DIGITS), isNotNull);
+    expect(RegExp(RegExpEx.R_SIGN), isNotNull);
+    expect(RegExp(RegExpEx.R_NUMBER), isNotNull);
   });
 
   test('splitNullSafe', () {
@@ -26,30 +25,24 @@ void main() {
     expect(StringEx.toTitleCase('test-num5ers'), 'Test Num5ers');
   });
 
-  group('listEquals', () {
-    List<int> intList = [1, 3, 5, 8, 13];
-    test('identical', () {
-      expect(listsEqual(intList, intList), true);
+  group('RegExpEx', () {
+    String pattern = r'\[(?<one>.*)\]';
+    RegExp r = RegExp(pattern);
+    String in1 = 'Some input with [a match]';
+    String in2 = 'Some input without a match';
+
+    test('hasNamedGroup', () {
+      expect(RegExpEx.hasNamedGroup(r.firstMatch(in1), 'one'), true);
+      expect(RegExpEx.hasNamedGroup(r.firstMatch(in1), 'two'), false);
+      expect(RegExpEx.hasNamedGroup(r.firstMatch(in2), 'two'), false);
+      expect(RegExpEx.hasNamedGroup(r.firstMatch(in2), 'one'), false);
     });
 
-    test('equivalent', () {
-      List<int> another = [1, 3, 5, 8, 13];
-      expect(listsEqual(intList, another), true);
-    });
-    
-    test('different lengths', () {
-      List<int> another = [1, 2, 3, 5, 8, 13];
-      expect(listsEqual(intList, another), false);
-    });
-    
-    test('same length, different members', () {
-      List<int> another = [1, 3, 5, 8, 11];
-      expect(listsEqual(intList, another), false);
-    });
-
-    test('different types', () {
-      List<String> another = ['1', '3', '5', '8', '13'];
-      expect(listsEqual(intList, another), false);
+    test('getNamedGroup', () {
+      expect(RegExpEx.getNamedGroup(r.firstMatch(in1), 'one'), 'a match');
+      expect(RegExpEx.getNamedGroup(r.firstMatch(in1), 'two'), isNull);
+      expect(RegExpEx.getNamedGroup(r.firstMatch(in2), 'two'), isNull);
+      expect(RegExpEx.getNamedGroup(r.firstMatch(in2), 'one'), isNull);
     });
   });
 }

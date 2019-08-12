@@ -1,5 +1,5 @@
 import 'package:dart_utils/dart_util.dart';
-import 'package:dart_utils/src/lists.dart';
+import 'package:dart_utils/src/regexps.dart';
 import 'package:quiver/collection.dart';
 import 'package:test/test.dart';
 

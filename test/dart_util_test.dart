@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dart_utils/dart_util.dart';
 import 'package:dart_utils/src/regexps.dart';
 import 'package:test/test.dart';
@@ -29,6 +31,13 @@ void main() {
     expect(ListEx.isEmpty(null), true);
     expect(ListEx.isEmpty([]), true);
     expect(ListEx.isEmpty(['list']), false);
+  });
+
+  test('toListOfString', () {
+    var text = '{"list": [1,2,3,4]}';
+    var temp = json.decode(text);
+    expect(JsonEx.toListOfStrings(temp['list']),
+        containsAllInOrder(['1', '2', '3', '4']));
   });
 
   group('RegExpEx', () {

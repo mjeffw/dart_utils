@@ -4,9 +4,9 @@ import 'package:test/test.dart';
 
 void main() {
   test('regex', () {
-    expect(RegExp(RegExpEx.R_DIGITS), isNotNull);
-    expect(RegExp(RegExpEx.R_SIGN), isNotNull);
-    expect(RegExp(RegExpEx.R_NUMBER), isNotNull);
+    expect(RegExp(R_DIGITS), isNotNull);
+    expect(RegExp(R_SIGN), isNotNull);
+    expect(RegExp(R_NUMBER), isNotNull);
   });
 
   test('splitNullSafe', () {

@@ -1,8 +1,8 @@
-class RegExpEx {
-  static String R_DIGITS = r'\d+'; // all positive integers
-  static String R_SIGN = r'[+|-]';
-  static String R_NUMBER = '$R_SIGN$R_DIGITS';
+const String R_DIGITS = r'\d+'; // all positive integers
+const String R_SIGN = r'[+|-]';
+const String R_NUMBER = '$R_SIGN$R_DIGITS';
 
+class RegExpEx {
   ///
   /// Return ```true``` if the match contains a group with the name.
   ///

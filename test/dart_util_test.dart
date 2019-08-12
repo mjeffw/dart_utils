@@ -16,4 +16,11 @@ void main() {
     expect(StringEx.splitNullSafe('*moose**and*squirell', '\*'),
         containsAllInOrder(['moose', '', 'and', 'squirell']));
   });
+
+  test('toTitleCase', () {
+    expect(StringEx.toTitleCase('test_underscore_s'), 'Test_underscore_s');
+    expect(StringEx.toTitleCase('test spaces is'), 'Test Spaces Is');
+    expect(StringEx.toTitleCase('test.dots'), 'Test Dots');
+    expect(StringEx.toTitleCase('test-num5ers'), 'Test Num5ers');
+  });
 }

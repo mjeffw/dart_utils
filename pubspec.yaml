@@ -7,7 +7,8 @@ author: Wilson, Marvin (jw9615) <jw9615@att.com>
 environment:
   sdk: '>=2.2.0 <3.0.0'
 
-#dependencies:
+dependencies:
+  quiver: ^2.0.5
 #  path: ^1.4.1
 
 dev_dependencies:

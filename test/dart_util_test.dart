@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:dart_utils/dart_util.dart';
-import 'package:dart_utils/src/regexps.dart';
 import 'package:test/test.dart';
+
+import 'package:dart_utils/dart_util.dart';
 
 void main() {
   test('regex', () {
@@ -59,5 +59,10 @@ void main() {
       expect(RegExpEx.getNamedGroup(r.firstMatch(in2), 'two'), isNull);
       expect(RegExpEx.getNamedGroup(r.firstMatch(in2), 'one'), isNull);
     });
+  });
+
+  test('setPrecision', () {
+    expect(Maths.setPrecision(0.1 + 0.2, 4), 0.3);
+    expect(Maths.setPrecision(0.1234567890, 4), 0.1235);
   });
 }

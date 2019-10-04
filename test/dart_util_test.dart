@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:test/test.dart';
 
-import 'package:dart_utils/dart_util.dart';
+import 'package:dart_utils/dart_utils.dart';
 
 void main() {
   test('regex', () {

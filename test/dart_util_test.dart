@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:test/test.dart';
 
@@ -21,10 +22,16 @@ void main() {
   });
 
   test('toTitleCase', () {
-    expect(StringEx.toTitleCase('test_underscore_s'), 'Test_underscore_s');
-    expect(StringEx.toTitleCase('test spaces is'), 'Test Spaces Is');
-    expect(StringEx.toTitleCase('test.dots'), 'Test Dots');
-    expect(StringEx.toTitleCase('test-num5ers'), 'Test Num5ers');
+    expect('test_underscore_s'.toTitleCase(), 'Test_underscore_s');
+    expect('test spaces is'.toTitleCase(), 'Test Spaces Is');
+    expect('test.dots'.toTitleCase(), 'Test Dots');
+    expect('test-num5ers'.toTitleCase(), 'Test Num5ers');
+  });
+
+  test('deleteTrailing', () {
+    expect('test_underscore_s'.deleteTrailing('_s'), 'test_underscore');
+    expect('test spaces is'.deleteTrailing(''), 'test spaces is');
+    expect('test.dots'.deleteTrailing('test'), 'test.dots');
   });
 
   test('isEmpty', () {
@@ -41,10 +48,10 @@ void main() {
   });
 
   group('RegExpEx', () {
-    var pattern = r'\[(?<one>.*)\]';
-    var r = RegExp(pattern);
-    var in1 = 'Some input with [a match]';
-    var in2 = 'Some input without a match';
+    final pattern = r'\[(?<one>.*)\]';
+    final r = RegExp(pattern);
+    final in1 = 'Some input with [a match]';
+    final in2 = 'Some input without a match';
 
     test('hasNamedGroup', () {
       expect(RegExpEx.hasNamedGroup(r.firstMatch(in1), 'one'), true);
@@ -61,8 +68,9 @@ void main() {
     });
   });
 
-  test('setPrecision', () {
-    expect(Maths.setPrecision(0.1 + 0.2, 4), 0.3);
-    expect(Maths.setPrecision(0.1234567890, 4), 0.1235);
+  test('double.toPrecision', () {
+    expect((0.1 + 0.2).toPrecision(4), 0.3);
+    expect((0.1234567890).toPrecision(4), 0.1235);
+    expect(pi.toPrecision(4), 3.1416);
   });
 }

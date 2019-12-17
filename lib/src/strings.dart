@@ -10,16 +10,21 @@ class StringEx {
       (source == null)
           ? []
           : pattern == null ? [source] : source.split(pattern);
+}
 
-  static String toTitleCase(String text) => RegExp(r'\w+')
-      .allMatches(text)
+///
+extension StringMethods on String {
+  /// Remove any trailing characters that match [other].
+  String deleteTrailing(String other) =>
+      (endsWith(other)) ? substring(0, length - other.length) : this;
+
+  /// Create a string with the first character uppercased.
+  String capitalizeWord() => replaceRange(0, 1, substring(0, 1).toUpperCase());
+
+  /// Uppercase the first character of each word of this string.
+  String toTitleCase() => RegExp(r'\w+')
+      .allMatches(this)
       .map((match) => match.group(0))
-      .map(capitalizeWord)
+      .map((f) => f.capitalizeWord())
       .reduce((a, b) => '$a $b');
-
-  ///
-  /// Convert the first character of this word to UpperCase.
-  ///
-  static String capitalizeWord(String word) =>
-      word.replaceRange(0, 1, word.substring(0, 1).toUpperCase());
 }

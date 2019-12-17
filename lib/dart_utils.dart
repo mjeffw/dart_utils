@@ -8,6 +8,6 @@ export 'src/strings.dart';
 export 'src/lists.dart';
 export 'src/jsons.dart';
 export 'src/maths.dart';
-export 'src/hashes.dart';
+// export 'src/hashes.dart';
 
 // TODO: Export any libraries intended for clients of this package.

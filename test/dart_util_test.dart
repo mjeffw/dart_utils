@@ -41,10 +41,10 @@ void main() {
   });
 
   group('RegExpEx', () {
-    String pattern = r'\[(?<one>.*)\]';
-    RegExp r = RegExp(pattern);
-    String in1 = 'Some input with [a match]';
-    String in2 = 'Some input without a match';
+    var pattern = r'\[(?<one>.*)\]';
+    var r = RegExp(pattern);
+    var in1 = 'Some input with [a match]';
+    var in2 = 'Some input without a match';
 
     test('hasNamedGroup', () {
       expect(RegExpEx.hasNamedGroup(r.firstMatch(in1), 'one'), true);
